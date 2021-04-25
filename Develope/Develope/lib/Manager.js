@@ -1,7 +1,9 @@
 const Employee = require('./Employee');
 
 class Manager extends Employee {
-    school
+    constructor(school){
+    this.school = school
+    }
 
     getSchool(){
  

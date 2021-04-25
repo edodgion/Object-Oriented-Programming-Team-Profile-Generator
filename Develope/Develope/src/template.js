@@ -1,5 +1,5 @@
 //creating the team by running functions that OUTPUT a string th is HTML
-const generateTeam = team =>{
+const generateTeam = (team) =>{
 const generateManager = manager => {
     return `<div>HTML ${manager.getName()}</div>`
 }
@@ -24,13 +24,9 @@ module.exports = team => {
     <div class="container">
     <div class="row">
 		<div class="team-area col-12 d-flex justify-content-center">
-				${generateTeam(team)}
-				<ul>
-					<li>Coding</li>
-					<li>JavaScript</li>
-					<li>HTML</li>
-					<li>CSS</li>
-				</ul>
+				${generateMangager(team[0])}
+                ${generatEngineer(team[0])}
+                ${generateIntern(team[0])}
 		</div>
 	</div>
 </body>
