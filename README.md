@@ -6,8 +6,6 @@ Your task is to build a Node.js command-line application that takes in informati
 
 Because this application won’t be deployed, you’ll need to provide a link to a walkthrough video that demonstrates its functionality and all of the tests passing. You’ll need to submit a link to the video AND add it to the readme of your project.
 
-> **Note**: There is no starter code for this assignment.
-
 ## User Story
 
 ```md
@@ -43,10 +41,12 @@ THEN I exit the application, and the HTML is generated
 ![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./Assets/10-object-oriented-programming-homework-demo.png)
 
 
-## Live Link of Video Demo
+## Live Link and Video Demo
+https://edodgion.github.io/Object-Oriented-Programming-Team-Profile-Generator/
+
 [My Video Demo]()
 
-[![My Demo](./images/demo.gif)]()
+[![My Demo](./images/)]()
 
 ## Screen Shots
 ![](./images/)
