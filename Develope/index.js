@@ -1,17 +1,18 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require("util");
-const Manager = require('./lib/Manager');
-const Intern = require('./lib/Intern');
-const Engineer = require('./lib/Engineer');
-const generateHtml = require('./src/template')
+// const Manager = require('./lib/Manager');
+// const Intern = require('./lib/Intern');
+// const Engineer = require('./lib/Engineer');
+//const generateHtml = require('./src/template')
 //const Employee = require('/Employee');
 const teamMembers = [];
 
 
 const promptUser = () => {
     
-  const generateTeam = () => {
+ // const generateTeam = () => {
+
   inquirer.prompt([
     {
       type: 'list',
@@ -22,7 +23,8 @@ const promptUser = () => {
       'Engineer', 
       'Intern'],
     }
-])
+  ])
+
 .then(answers => {
   if (answers.employeeChoice === 'Manager') {
       generateManager();
@@ -87,12 +89,12 @@ const generateEngineer = () => {
       {
           type: 'input',
           name: 'engineerEmail',
-          message: "What is the Engineers Email?"
+          message: "What is the Engineer's Email?"
       },
       {
           type: 'input',
           name: 'engineerGithub',
-          message: "What is the Engineers Github account?"
+          message: "What is the Engineer's Github user name?"
       }
    ])
    .then(answers => {
@@ -107,23 +109,22 @@ const generateEngineer = () => {
 })
 };
 
-
     const generateIntern = () => {
       inquirer.prompt([
           {
               type: 'input',
               name: 'internName',
-              message: "What is the Interns name?"
+              message: "What is the Intern's name?"
           },
           {
               type: 'input',
               name: 'internId',
-              message: "What is the Interns ID Number?"
+              message: "What is the Intern's ID Number?"
           },
           {
               type: 'input',
               name: 'internEmail',
-              message: "What is the Interns Email?"
+              message: "What is the Intern's Email?"
           },
           {
               type: 'input',
@@ -141,16 +142,16 @@ const generateEngineer = () => {
           teamMembers.push(intern);
           pickEmployee();
       })
-      }
-    };
+      };
+    //};
 
 
-const init = () => {
-  promptUser()
-    .then((answers) => writeFileAsync('gernerateIndex.html', generateTeam(answers)))
-    .then(() => console.log('Successfully wrote to util'))
-    .catch((err) => console.error(err));
-};
+// const init = () => {
+//   promptUser()
+//     .then((answers) => writeFileAsync('index.html', generateHTML(teamMembers)))
+//     .then(() => console.log('Successfully wrote to util'))
+//     .catch((err) => console.error(err));
+// };
 
-// Function call to initialize app
-init();
+// // Function call to initialize app
+// init();
