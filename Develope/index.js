@@ -1,17 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require("util");
-// const Manager = require('./lib/Manager');
-// const Intern = require('./lib/Intern');
-// const Engineer = require('./lib/Engineer');
-//const generateHtml = require('./src/template')
-//const Employee = require('/Employee');
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
+const Engineer = require('./lib/Engineer');
+const generateHtml = require('./src/template');
+
 const teamMembers = [];
-
-
-const promptUser = () => {
     
- // const generateTeam = () => {
+const generateTeam = () => {
 
   inquirer.prompt([
     {
@@ -33,10 +29,10 @@ const promptUser = () => {
   } else if (answers.employeeChoice === 'Intern') {
     generateIntern();
 }else {
-      return generateTeam();
+  let answers = generateHTML(teamMembers);
+  fs.writeFileSync("index.html", answers, "utf-8");
   }
 })
-}
 
 const generateManager = () => {
   inquirer.prompt([
@@ -143,15 +139,30 @@ const generateEngineer = () => {
           pickEmployee();
       })
       };
-    //};
+  };
 
 
-// const init = () => {
-//   promptUser()
+  const init = () => {
+    inquirer.prompt(generateTeam).then((answers) => {
+        teamMembers.push(
+            new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        );
+        if (answers.members === "Engineer") {
+            askEngineer();
+        } else if (answers.members === "Intern") {
+            askIntern();
+        } else {
+            //end function here and generateHTML
+            let answers = generateHTML(teamMembers);
+            fs.writeFileSync("index.html", answers, "utf-8");
+        }
+    });
+};
+//   generateTeam ()
 //     .then((answers) => writeFileAsync('index.html', generateHTML(teamMembers)))
 //     .then(() => console.log('Successfully wrote to util'))
 //     .catch((err) => console.error(err));
 // };
 
-// // Function call to initialize app
-// init();
+// Function call to initialize app
+init();
