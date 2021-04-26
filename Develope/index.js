@@ -7,33 +7,6 @@ const generateHtml = require('./src/template');
 
 const teamMembers = [];
     
-const generateTeam = () => {
-
-  inquirer.prompt([
-    {
-      type: 'list',
-      name: 'role',
-      message:"What is this Emplyee's role?",
-      choices: 
-      ['Manager',
-      'Engineer', 
-      'Intern'],
-    }
-  ])
-
-.then(answers => {
-  if (answers.employeeChoice === 'Manager') {
-      generateManager();
-  } else if (answers.employeeChoice === 'Engineer'){
-      generateEngineer();
-  } else if (answers.employeeChoice === 'Intern') {
-    generateIntern();
-}else {
-  let answers = generateHTML(teamMembers);
-  fs.writeFileSync("index.html", answers, "utf-8");
-  }
-})
-
 const generateManager = () => {
   inquirer.prompt([
       {
@@ -54,21 +27,15 @@ const generateManager = () => {
         type: 'input',
         name: 'managerOfficeNum',
         message: "What is the Manager's Office Number?"
-    }
+    },
+    {
+      type: "list",
+      name: "members",
+      message: "Do you want to add a team member? If yes, select their role.",
+      choices: ["Engineer", "Intern", "I'm done."],
+  }
   ])
-  .then(answers => {
-    const manager = new Manager(
-        answers.managerName,
-        answers.managerId,
-        answers.managerEmail,
-        answers.managerOfficeNum,
-    )
-    teamMembers.push(manager); 
-    pickEmployee();
-  })
-
 };
-
 
 const generateEngineer = () => {
   inquirer.prompt([
@@ -139,18 +106,24 @@ const generateEngineer = () => {
           pickEmployee();
       })
       };
-  };
+
 
 
   const init = () => {
-    inquirer.prompt(generateTeam).then((answers) => {
-        teamMembers.push(
-            new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
-        );
+    inquirer.prompt(generateTeam)
+    .then((answers) => {
+  
+            new Manager(
+              answers.name, 
+              answers.id, 
+              answers.email, 
+              answers.officeNumber
+              )
+              teamMembers.push(manager);
         if (answers.members === "Engineer") {
-            askEngineer();
+            generateEngineer();
         } else if (answers.members === "Intern") {
-            askIntern();
+            generateIntern();
         } else {
             //end function here and generateHTML
             let answers = generateHTML(teamMembers);
