@@ -6,10 +6,8 @@ const Engineer = require('./lib/Engineer');
 const generateHtml = require('./src/template');
 
 const teamMembers = [];
-    
-const generateManager = () => {
-  inquirer.prompt([
-      {
+
+const generateManager = [{
         type: 'input',
         name: 'name',
         message: "Waht is the Manager's name?"
@@ -30,12 +28,12 @@ const generateManager = () => {
     },
     {
       type: "list",
-      name: "members",
-      message: "Do you want to add a team member? If yes, select their role.",
-      choices: ["Engineer", "Intern", "I'm done."],
-  }
-  ])
-};
+      name: "team",
+      message: "Do you want to add a team member? Please select their role.",
+      choices: ["Engineer", "Intern", "Generate Team"],
+    }
+];
+
 
 const generateEngineer = () => {
   inquirer.prompt([
@@ -58,17 +56,30 @@ const generateEngineer = () => {
           type: 'input',
           name: 'engineerGithub',
           message: "What is the Engineer's Github user name?"
-      }
+      },
+      {
+        type: "list",
+        name: "team",
+        message: "Do you want to add a team member? Please select their role.",
+        choices: ["Engineer", "Intern", "Generate Team"],
+    }
    ])
-   .then(answers => {
-    const engineer = new Engineer(
+   .then((answers) => {
+    teamMembers.push(new Engineer(
         answers.engineerName,
         answers.engineerId,
         answers.engineerEmail,
         answers.engineerGithub,
     )
-    teamMembers.push(engineer);
-    pickEmployee();
+   );
+   if (answers.team === "Engineer") {
+    generateEngineer();
+} else if (answers.team === "Intern") {
+    generateIntern();
+} else {
+    let answers = generateHtml(teamMembers);
+    fs.writeFileSync("index.html", answers);
+}
 })
 };
 
@@ -93,49 +104,56 @@ const generateEngineer = () => {
               type: 'input',
               name: 'internSchool',
               message: "What School did the Intern go to?"
-          }
+          },
+          {
+            type: "list",
+            name: "team",
+            message: "Do you want to add a team member? Please select their role.",
+            choices: ["Engineer", "Intern", "Generate Team"],
+        }
         ])
-        .then(answers => {
-          const intern = new Intern(
+        .then((answers) => {
+            teamMembers.push(new Intern(
               answers.internName,
               answers.internId,
               answers.internEmail,
               answers.internSchool,
           )
-          teamMembers.push(intern);
-          pickEmployee();
+            );
+            if (answers.team === "Engineer") {
+                generateEngineer();
+            } else if (answers.team === "Intern") {
+                generateIntern();
+            } else {
+                let answers = generateHtml(teamMembers);
+                fs.writeFileSync("index.html", answers);
+            }
+        
       })
       };
 
 
 
   const init = () => {
-    inquirer.prompt(generateTeam)
-    .then((answers) => {
+    inquirer.prompt(generateManager)
+    .then(answers => {
   
-            new Manager(
+        teamMembers.push( new Manager(
               answers.name, 
               answers.id, 
               answers.email, 
               answers.officeNumber
-              )
-              teamMembers.push(manager);
-        if (answers.members === "Engineer") {
+        )
+              );
+        if (answers.team === "Engineer") {
             generateEngineer();
-        } else if (answers.members === "Intern") {
+        } else if (answers.team === "Intern") {
             generateIntern();
         } else {
-            //end function here and generateHTML
-            let answers = generateHTML(teamMembers);
-            fs.writeFileSync("index.html", answers, "utf-8");
+            let answers = generateHtml(teamMembers);
+            fs.writeFileSync("index.html", answers);
         }
     });
 };
-//   generateTeam ()
-//     .then((answers) => writeFileAsync('index.html', generateHTML(teamMembers)))
-//     .then(() => console.log('Successfully wrote to util'))
-//     .catch((err) => console.error(err));
-// };
 
-// Function call to initialize app
 init();

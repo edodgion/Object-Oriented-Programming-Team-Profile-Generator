@@ -1,10 +1,10 @@
 const generateManager = (answers) => {
     return `<div class='container'>
-    <ul class="ul"><li>
+    <ul class="ul">
   <div class="col-md-3">
   <div class="card cardbody">
        <div class="card-header font: text-white" style="background: #1a75ff">
-              ${answers.name}<br>
+       <h1>${answers.name}</h1>
               <div class="fas fa-mug-hot">
                 ${answers.getRole()}
               </div>
@@ -15,10 +15,10 @@ const generateManager = (answers) => {
          <p> <b> ID: </b> ${answers.id} </p>
       </div>
       <div class="form-group">
-         <p> <b> Email: </b> ${answers.email} </p>
+         <p> <b> Email: </b> <a href="${answers.email}">${answers.email}</a></p>
       </div>
       <div class="form-group">
-         <p> <b>Office Number: </b>${answers.officeNumber}   </p>                 
+         <p> <b>Office Number: </b>${answers.officeNumber}</p>                 
       </div>   
                    
       </form>
@@ -29,11 +29,11 @@ const generateManager = (answers) => {
 };
 const generateEngineer = (answers) => {
     return `<div class='container'>
-    <ul class="ul"><li>
+    <ul class="ul">
   <div class="col-md-3">
   <div class="card cardbody">
   <div class="card-header font: text-white" style="background: #1a75ff">
-            ${answers.name}<br> 
+           <h1> ${answers.name} </h1>
               <div class="fas fa-glasses">
               <br>
               ${answers.getRole()}
@@ -45,10 +45,10 @@ const generateEngineer = (answers) => {
        <p> <b>  ID: </b>  ${answers.id} </p>
       </div>
       <div class="form-group">
-       <p> <b>  Email: </b> ${answers.email} </p>
+       <p> <b>  Email: </b> <a href="${answers.email}"> ${answers.email}</a> </p>
       </div>
       <div class="form-group">
-        <p> <b> GitHub: </b> ${answers.gitHub}  </p>            
+        <p> <b> GitHub: </b> <div href="${answers.gitHub}"> ${answers.gitHub} </div> </p>            
       </div>                
       </form>
   </div>
@@ -58,11 +58,11 @@ const generateEngineer = (answers) => {
 };
 const generateIntern = (answers) => {
     return `<div class='container'>
-    <ul class="ul"><li>
+    <ul class="ul">
   <div class="col-md-3">
   <div class="card cardbody">
   <div class="card-header font: text-white" style="background: #1a75ff">
-              ${answers.name}<br>
+  <h1> ${answers.name} </h1>
               <div class="fas fa-user-graduate">
               <br>
              ${answers.getRole()}
@@ -71,13 +71,13 @@ const generateIntern = (answers) => {
   <div class="card-body">
       <form role="form">          
       <div class="form-group">
-       <p> <b>  ID: </b> ${answers.id} </P>
+       <p>  ID: ${answers.id} </P>
       </div>
       <div class="form-group">
-       <p> <b> Email: </b> ${answers.email} </P>
+       <p> <b> Email:  <a href="${answers.email}"> ${answers.email}</a> </P>
       </div>
       <div class="form-group">
-      <p> <b>  School: </b> ${answers.school} </p>            
+      <p>   School:  ${answers.school} </p>            
       </div>                
       </form>
   </div>
@@ -85,12 +85,12 @@ const generateIntern = (answers) => {
 </div>
 </li>`;
 };
-const generateCards = (answers) => {
+const generateTeam = (answers) => {
     let htmlString = "";
     
     answers.forEach((element) => {
         console.log(element)
-        //generate a card based on role
+      
         if (element.getRole() === "Manager") {
             let string = generateManager(element);
             htmlString += string;
@@ -110,7 +110,7 @@ const generateCards = (answers) => {
     return htmlString;
 
 };
-const generateHTML = (answers) => {
+const generateHtml = (answers) => {
     return `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -127,9 +127,9 @@ const generateHTML = (answers) => {
   <h1 class="display-4 text-center">My Team</h1>
   </div>
 </div>
-      ${generateCards(answers)}
+      ${generateTeam(answers)}
   
   </body>
   </html>`;
 };
-module.exports = generateHTML;
+module.exports = generateHtml;
