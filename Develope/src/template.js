@@ -1,9 +1,10 @@
 const generateManager = (answers) => {
     return `<div class='container'>
     <ul class="ul">
+    <div class="row">
   <div class="col-md-3">
   <div class="card cardbody">
-       <div class="card-header font: text-white" style="background: #1a75ff">
+       <div class="card-header font: text-white" style="background: #175fcc">
        <h1>${answers.name}</h1>
               <div class="fas fa-mug-hot">
                 ${answers.getRole()}
@@ -12,27 +13,27 @@ const generateManager = (answers) => {
   <div class="card-body">
       <form role="form">          
       <div class="form-group">
-         <p> <b> ID: </b> ${answers.id} </p>
+         <p>  ID:  ${answers.id} </p>
       </div>
       <div class="form-group">
-         <p> <b> Email: </b> <a href="${answers.email}">${answers.email}</a></p>
+         <p>  Email:  <a href="${answers.email}">${answers.email}</a></p>
       </div>
       <div class="form-group">
-         <p> <b>Office Number: </b>${answers.officeNumber}</p>                 
+         <p> Office Number: ${answers.officeNumber}</p>                 
       </div>   
                    
       </form>
   </div>
   </div>
-</div>
-</li>`;
+</div>`;
 };
 const generateEngineer = (answers) => {
     return `<div class='container'>
     <ul class="ul">
+    <div class="row">
   <div class="col-md-3">
   <div class="card cardbody">
-  <div class="card-header font: text-white" style="background: #1a75ff">
+  <div class="card-header font: text-white" style="background: #175fcc">
            <h1> ${answers.name} </h1>
               <div class="fas fa-glasses">
               <br>
@@ -42,26 +43,26 @@ const generateEngineer = (answers) => {
   <div class="card-body">
       <form role="form">          
       <div class="form-group">
-       <p> <b>  ID: </b>  ${answers.id} </p>
+       <p>ID: ${answers.id} </p>
       </div>
       <div class="form-group">
-       <p> <b>  Email: </b> <a href="${answers.email}"> ${answers.email}</a> </p>
+       <p>Email:<a href="${answers.email}"> ${answers.email}</a></p>
       </div>
       <div class="form-group">
-        <p> <b> GitHub: </b> <div href="${answers.gitHub}"> ${answers.gitHub} </div> </p>            
+        <p>GitHub:<a href="${answers.github}"> ${answers.github} </a></p>            
       </div>                
       </form>
   </div>
   </div>
-</div>
-</li>`;
+</div>`;
 };
 const generateIntern = (answers) => {
     return `<div class='container'>
     <ul class="ul">
+    <div class="row">
   <div class="col-md-3">
   <div class="card cardbody">
-  <div class="card-header font: text-white" style="background: #1a75ff">
+  <div class="card-header font: text-white" style="background: #175fcc">
   <h1> ${answers.name} </h1>
               <div class="fas fa-user-graduate">
               <br>
@@ -71,19 +72,18 @@ const generateIntern = (answers) => {
   <div class="card-body">
       <form role="form">          
       <div class="form-group">
-       <p>  ID: ${answers.id} </P>
+       <p>ID: ${answers.id} </P>
       </div>
       <div class="form-group">
-       <p> <b> Email:  <a href="${answers.email}"> ${answers.email}</a> </P>
+       <p>Email:<a href="${answers.email}"> ${answers.email}</a> </P>
       </div>
       <div class="form-group">
-      <p>   School:  ${answers.school} </p>            
+      <p>School: <a href="${answers.school}"> ${answers.school}</p>            
       </div>                
       </form>
   </div>
   </div>
-</div>
-</li>`;
+</div>`;
 };
 const generateTeam = (answers) => {
     let htmlString = "";
@@ -122,9 +122,9 @@ const generateHtml = (answers) => {
       <link rel="stylesheet" href="./dist/style.css"/>
       </head>
   <body>
-  <div class="jumbotron jumbotron-fluid" style='background-color: #ff0066;'>
+  <div class="jumbotron jumbotron-fluid" style='background-color: #be4242;'>
   <div class="container">
-  <h1 class="display-4 text-center">My Team</h1>
+  <h1 class="display-4 text-center font: text-white p-3"><b> My Team </b></h1>
   </div>
 </div>
       ${generateTeam(answers)}
@@ -132,4 +132,6 @@ const generateHtml = (answers) => {
   </body>
   </html>`;
 };
+
+
 module.exports = generateHtml;

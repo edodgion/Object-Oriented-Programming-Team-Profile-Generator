@@ -49,8 +49,7 @@ https://edodgion.github.io/Object-Oriented-Programming-Team-Profile-Generator/
 [![My Demo](./images/)]()
 
 ## Screen Shots
-![](./images/)
-![](./images/)
-![](./images/)
+![](./images/oop.png)
+![](./images/)oop2.png
 ## Credit 
 This page was made with ❤️ by Eric Dodgion 04/25/21

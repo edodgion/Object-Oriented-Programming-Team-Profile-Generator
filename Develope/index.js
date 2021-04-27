@@ -23,7 +23,7 @@ const generateManager = [{
       },
       {
         type: 'input',
-        name: 'managerOfficeNum',
+        name: 'officeNumber',
         message: "What is the Manager's Office Number?"
     },
     {
