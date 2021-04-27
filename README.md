@@ -44,9 +44,9 @@ THEN I exit the application, and the HTML is generated
 ## Live Link and Video Demo
 https://edodgion.github.io/Object-Oriented-Programming-Team-Profile-Generator/
 
-[My Video Demo]()
+[My Video Demo](https://youtu.be/XYycwYhP86k)
 
-[![My Demo](./images/)]()
+[![My Demo](./images/oopgif.gif)](https://youtu.be/XYycwYhP86k)
 
 ## Screen Shots
 ![](./images/oop.png)
