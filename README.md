@@ -45,6 +45,7 @@ THEN I exit the application, and the HTML is generated
 https://edodgion.github.io/Object-Oriented-Programming-Team-Profile-Generator/
 
 [My Video Demo](https://youtu.be/XYycwYhP86k)
+[My Test Video Demo](https://youtu.be/leW3msQkzNk)
 
 [![My Demo](./images/oopgif.gif)](https://youtu.be/XYycwYhP86k)
 
